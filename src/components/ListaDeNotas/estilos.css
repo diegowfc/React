@@ -1,0 +1,16 @@
+.lista {
+    display: grid;
+    flex-grow: 3;
+    grid-template-columns: auto auto auto auto;
+    padding-left: 24px;
+    padding-top: 24px;
+    background-origin: #ffffff;
+}
+
+.items {
+    margin: 12px;
+    max-width: 240px;
+    max-height: 400px;
+    display: inline;
+    list-style-type: none;
+}
