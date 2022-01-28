@@ -3,6 +3,25 @@ import './estilos.css';
 
 class ListaDeCategorias extends Component {
 
+    constructor() {
+        super();
+        this.state = { categorias: [] }
+
+        this._novaCategorias = this._novaCategorias.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.categorias.inscrever(this._novaCategorias);
+    }
+
+    componentWillUnmount() {
+        this.props.categorias.desinscrever(this._novaCategorias);
+    }
+
+    _novaCategorias(categorias) {
+        this.setState({ ...this.state, categorias })
+    }
+
     _handlerEventoInput(evento) {
         if (evento.key == 'Enter') {
             var categoria = evento.target.value;
@@ -16,7 +35,7 @@ class ListaDeCategorias extends Component {
         return (
             <div className='categorias'>
                 <ul className='lista-categorias'>
-                    {this.props.categorias.map((categoria, index) => {
+                    {this.state.categorias.map((categoria, index) => {
                         return <li key={index} className='lista-categorias-item'>{categoria}</li>
                     })}
                 </ul>
